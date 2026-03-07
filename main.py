@@ -59,9 +59,11 @@ def calc_salary_statistics(all_vacancies, vacancies_found, func_predict_salary):
     if vacancies_processed:
         average_salary = int(average_salary / vacancies_processed)
 
-    return {'vacancies_found': vacancies_found,
-            'vacancies_processed': vacancies_processed,
-            'average_salary': average_salary}
+    return {
+                'vacancies_found': vacancies_found,
+                'vacancies_processed': vacancies_processed,
+                'average_salary': average_salary
+            }
 
 
 def get_salary_statistics_hh():
