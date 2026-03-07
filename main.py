@@ -66,15 +66,18 @@ def calc_salary_statistics(all_vacancies, vacancies_found, func_predict_salary):
 
 def get_salary_statistics_hh():
     salary_statistics_in_prog_langs = {}
+    developer_role_id = 96
+    moscow_id = 1
+    max_per_page = 100
     for prog_lang in PROG_LANGS:
         page = 0
         all_vacancies = []
         while True:
             params = {
-                'professional_role': 96,
-                'area': 1,
+                'professional_role': developer_role_id,
+                'area': moscow_id,
                 'text': prog_lang,
-                'per_page': 100,
+                'per_page': max_per_page,
                 'page': page
             }
             response = requests.get('https://api.hh.ru/vacancies', params=params)
@@ -97,15 +100,18 @@ def get_salary_statistics_sj(secret_key):
     headers = {
         'X-Api-App-Id': secret_key
     }
+    programming_cat_key = 48
+    moscow_id = 4
+    max_per_page = 100
     for prog_lang in PROG_LANGS:
         page = 0
         all_vacancies = []
         while True:
             params = {
-                'town': 4,
-                'catalogues': 48,
+                'town': moscow_id,
+                'catalogues': programming_cat_key,
                 'keyword': prog_lang,
-                'count': 100,
+                'count': max_per_page,
                 'page': page
             }
             response = requests.get('https://api.superjob.ru/2.0/vacancies', headers=headers, params=params)
